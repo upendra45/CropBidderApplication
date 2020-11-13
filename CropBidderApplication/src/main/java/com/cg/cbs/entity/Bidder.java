@@ -1,0 +1,76 @@
+package com.cg.cbs.entity;
+
+import javax.persistence.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.*;
+
+@Entity
+public class Bidder
+{
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int bidderId;
+	private String city;
+	private String licenseNo;
+	private String pan;
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<Bid> bids;
+	private boolean isVerified;
+	
+	public Bidder()
+	{}
+	public Bidder(int bidderId, String city, String licenseNo, String pan, List<Bid> bids, boolean isVerified) {
+		super();
+		this.bidderId = bidderId;
+		this.city = city;
+		this.licenseNo = licenseNo;
+		this.pan = pan;
+		this.bids = bids;
+		this.isVerified = isVerified;
+	}
+	public int getBidderId() {
+		return bidderId;
+	}
+	public void setBidderId(int bidderId) {
+		this.bidderId = bidderId;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getLicenseNo() {
+		return licenseNo;
+	}
+	public void setLicenseNo(String licenseNo) {
+		this.licenseNo = licenseNo;
+	}
+	public String getPan() {
+		return pan;
+	}
+	public void setPan(String pan) {
+		this.pan = pan;
+	}
+	public List<Bid> getBids() {
+		return bids;
+	}
+	public void setBids(List<Bid> bids) {
+		this.bids = bids;
+	}
+	public boolean isVerified() {
+		return isVerified;
+	}
+	public void setVerified(boolean isVerified) {
+		this.isVerified = isVerified;
+	}
+	@Override
+	public String toString() {
+		return "Bidder [bidderId=" + bidderId + ", city=" + city + ", licenseNo=" + licenseNo + ", pan=" + pan
+				+ ", bids=" + bids + ", isVerified=" + isVerified + "]";
+	}
+	
+	
+}
